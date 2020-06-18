@@ -1,0 +1,102 @@
+.form__paragraph {
+    padding: 5px 15px;
+    display: inline-block;
+    font-size: 18px;
+    color: rgb(194, 14, 14);
+}
+
+.form__fieldset {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
+    min-height: 300px;
+    border: 4px inset rgba(0, 103, 4, 0.5098039215686274);
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px #dfff96f5;
+}
+
+.form__legend {
+    padding: 7px;
+    min-width: 250px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(1, 82, 1);
+    text-align: center;
+    background-color: rgb(245, 255, 235);
+    border: 4px inset rgba(0, 103, 4, 0.5098039215686274);
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px #dfff96f5;
+}
+
+.form__label {
+    padding: 0px 5px;
+    font-size: 18px;
+    color: rgb(1, 82, 1);
+    float: left;
+}
+
+.form__select {
+    margin: 20px;
+    padding: 2px 25px;
+    max-width: 200px;
+    border: 4px inset rgba(0, 103, 4, 0.5098039215686274);
+    border-radius: 15px;
+}
+
+.form__select:hover {
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px #dfff96f5;
+    background-color: rgb(236, 236, 236);
+}
+
+.form__select:focus {
+    outline: 4px inset rgba(0, 103, 4, 0.5098039215686274);
+    border: none;
+    background-color: rgb(236, 236, 236);
+}
+
+.form__input {
+    margin: 18px;
+    padding: 5px 25px;
+    border-radius: 15px;
+}
+
+.form__input:hover {
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px #dfff96f5;
+    background-color: rgb(236, 236, 236);
+}
+
+.form__input:focus {
+    outline: 4px inset rgba(0, 103, 4, 0.5098039215686274);
+    border: none;
+    background-color: rgb(236, 236, 236);
+}
+
+.form__button {
+    margin: 90px auto 10px;
+    padding: 7px;
+    min-width: 180px;
+    display: block;
+    float: right;
+    font-size: 18px;
+    color: rgb(1, 82, 1);
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(245, 255, 235);
+    border: 4px inset rgba(0, 103, 4, 0.5098039215686274);
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px #dfff96f5;
+}
+
+.form__button:hover {
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px #dfff96f5;
+    background-color: rgb(236, 236, 236);
+}
+
+.form__button:focus {
+    outline: 4px inset rgba(0, 103, 4, 0.5098039215686274);
+    border: none;
+    background-color: rgb(236, 236, 236);
+}

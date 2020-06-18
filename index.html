@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator walut</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body class="body">
+    <header class="header">
+        <h1 class="header__headline">Kalkulator walut</h1>
+        <p class="header__paragraph">Kalkulator walut przelicza dowolną ilość wybranej waluty na inną. Jeśli nie znasz
+            kursu interesującej Cię Waluty- sprawdź na stronie NBP.</p>
+    </header>
+    <section class="section">
+        <form class="form">
+            <fieldset class="form__fieldset">
+                <legend class="form__legend">Kalkulator walut</legend>
+                <label class="form__label">Wybierz walutę, którą posiadasz
+                    <select class="form__select js-form__select--firstCurrency" name="currency">
+                        <option value="CZK">CZK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="HRK">HRK</option>
+                        <option value="HUF">HUF</option>
+                        <option value="PLN" selected>PLN</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </label>
+                <label class="form__label">Wybierz walutę, którą chcesz zakupić
+                    <select class="form__select js-form__select--secondCurrency" name="currency">
+                        <option value="CZK">CZK</option>
+                        <option value="EUR" selected>EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="HRK">HRK</option>
+                        <option value="HUF">HUF</option>
+                        <option value="PLN">PLN</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </label>
+                <label class="form__label">Kwota*:
+                    <input class="form__input js-form__input--amount" type="number" step="0.01" min="0.01" required>
+                </label>
+                <label class="form__label">Kurs*:
+                    <input class="form__input js-form__input--exchange" type="number" step="0.0001"
+                        pattern="[0-9].[0-9]{4}" required>
+                </label>
+                <div>
+                    <p class="form__paragraph js-form__paragraph"></p>
+                    <p class="form__paragraph js-result"></p>
+                    <p class="form__paragraph"> Pola, które oznaczone zostały "*" są wymagane.</p>
+                </div>
+
+                <button class="form__button">Przelicz</button>
+            </fieldset>
+        </form>
+    </section>
+</body>
+
+
+</html>

@@ -1,0 +1,15 @@
+.header__headline {
+    padding: 8px;
+    font-size: 25px;
+    color: rgb(1, 82, 1);
+    text-align: center;
+    border: 4px inset rgba(0, 103, 4, 0.5098039215686274);
+    border-radius: 15px;
+    background-color: rgb(245, 255, 235);
+    box-shadow: 0px 0px 5px 1px #dfff96f5;
+}
+
+.header__paragraph {
+    font-size: 18px;
+    text-align: center;
+}
