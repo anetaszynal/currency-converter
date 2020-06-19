@@ -1,22 +1,68 @@
-let amount = document.querySelector(".js-form__input--amount");
-let exchange = document.querySelector(".js-form__input--exchange");
-let firstCurrency = document.querySelector(".js-form__select--firstCurrency");
-let secondCurrency = document.querySelector(".js-form__select--secondCurrency");
-let addParagraph = document.querySelector(".js-form__paragraph");
-let formElement = document.querySelector(".form");
-let result = document.querySelector(".js-result");
+let showTable = document.querySelector(".js-button--showTable");
+let hiddenTable = document.querySelector(".js-section__tableContainer");
 
+showTable.addEventListener("click", () => {
+    if (showTable.innerText === "Ukryj tabelę z kursami wymiany") {
+        hiddenTable.classList.add("js-section__tableContainer--hidden");
+        showTable.innerText = "Pokaż tabelę z kursami wymiany";
+    }
+    else {
+        showTable.innerText = "Ukryj tabelę z kursami wymiany";
+        hiddenTable.classList.toggle("js-section__tableContainer--hidden");
+    }
+});
+
+
+let formElement = document.querySelector(".js-form");
+let amountElement = document.querySelector(".js-form__input--amount");
+let yourCurrencyElement = document.querySelector(".js-form__select--yourCurrency");
+let finalCurrencyElement = document.querySelector(".js-form__select--finalCurrency");
+let resultElement = document.querySelector(".js-result");
 
 formElement.addEventListener("submit", (event) => {
     event.preventDefault();
-    let firstCurrencyElement = firstCurrency.value;
-    let secondCurrencyElement = secondCurrency.value;
-    let exchangeElement = (1 / exchange.value);
-    let amountElement = amount.value;
-    let wynik = (amountElement * exchangeElement);
 
-    addParagraph.innerText = `1 ${firstCurrencyElement} jest równy ${exchangeElement.toFixed(2)} ${secondCurrencyElement}`;
-    result.innerText = ` Za ${amountElement} ${firstCurrencyElement} kupisz ${wynik.toFixed(2)} ${secondCurrencyElement}`;
 
-    console.log(firstCurrencyElement, secondCurrencyElement, exchangeElement, amountElement);
+    let amount = + amountElement.value;
+    let yourCurrency = yourCurrencyElement.value;
+    let finalCurrency = finalCurrencyElement.value; 
+
+    let eurRate = 4.4534;
+    let gbpRate = 4.9551;
+    let usdRate = 3.9589;
+    let plnValue;
+
+    switch (yourCurrency) {
+        case "PLN":
+            plnValue = amount;
+            break;
+        case "EUR":
+            plnValue = amount * eurRate;
+            break;
+        case "GBP":
+            plnValue = amount * gbpRate;
+            break;
+        case "USD":
+            plnValue = amount * usdRate
+            break;
+
+    }
+
+    switch (finalCurrency) {
+        case "PLN":
+            result = plnValue;
+            break;
+        case "EUR":
+            result = plnValue / eurRate;
+            break;
+        case "GBP":
+            result = plnValue / gbpRate;
+            break;
+        case "USD":
+            result = plnValue / usdRate;
+            break;
+
+    }
+
+    resultElement.innerText = ` Za ${amount} ${yourCurrency} kupisz u nas ${result.toFixed(2)} ${finalCurrency}`;
 });

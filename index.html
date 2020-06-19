@@ -4,66 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator walut</title>
+    <title>Konwenter walut</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
         integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/button.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <script defer src="js/script.js"></script>
 </head>
 
 <body class="body">
-    <header class="header">
-        <h1 class="header__headline">Kalkulator walut</h1>
-        <p class="header__paragraph">Kalkulator walut przelicza dowolną ilość wybranej waluty na inną. Jeśli nie znasz
-            kursu interesującej Cię Waluty- sprawdź na stronie NBP.</p>
-    </header>
-    <section class="section">
-        <form class="form">
+    <main class="main">
+        <form class="form js-form">
             <fieldset class="form__fieldset">
-                <legend class="form__legend">Kalkulator walut</legend>
-                <label class="form__label">Wybierz walutę, którą posiadasz
-                    <select class="form__select js-form__select--firstCurrency" name="currency">
-                        <option value="CZK">CZK</option>
+                <legend class="form__legend">Internetowy Kantor</legend>
+                <p class="form__paragraph form__paragraph--instruction"> Pola, które oznaczone zostały "*" są wymagane.
+                </p>
+                <label class="form__label">Podaj kwotę, którą dysponujesz *:
+                    <input class="form__input js-form__input--amount" type="number" step="0.01" min="0.01" placeholder="Tutaj wpisz kwotę" required>
+                </label>
+                <label class="form__label">Wybierz walutę, którą posiadasz:
+                    <select class="form__select js-form__select--yourCurrency" name="currency">
                         <option value="EUR">EUR</option>
                         <option value="GBP">GBP</option>
-                        <option value="HRK">HRK</option>
-                        <option value="HUF">HUF</option>
                         <option value="PLN" selected>PLN</option>
                         <option value="USD">USD</option>
                     </select>
                 </label>
-                <label class="form__label">Wybierz walutę, którą chcesz zakupić
-                    <select class="form__select js-form__select--secondCurrency" name="currency">
-                        <option value="CZK">CZK</option>
+                <label class="form__label">Wybierz walutę, którą chcesz zakupić:
+                    <select class="form__select js-form__select--finalCurrency" name="currency">
                         <option value="EUR" selected>EUR</option>
                         <option value="GBP">GBP</option>
-                        <option value="HRK">HRK</option>
-                        <option value="HUF">HUF</option>
                         <option value="PLN">PLN</option>
                         <option value="USD">USD</option>
                     </select>
                 </label>
-                <label class="form__label">Kwota*:
-                    <input class="form__input js-form__input--amount" type="number" step="0.01" min="0.01" required>
-                </label>
-                <label class="form__label">Kurs*:
-                    <input class="form__input js-form__input--exchange" type="number" step="0.0001"
-                        pattern="[0-9].[0-9]{4}" required>
-                </label>
-                <div>
-                    <p class="form__paragraph js-form__paragraph"></p>
-                    <p class="form__paragraph js-result"></p>
-                    <p class="form__paragraph"> Pola, które oznaczone zostały "*" są wymagane.</p>
-                </div>
+                <p class="form__paragraph js-result"></p>
 
-                <button class="form__button">Przelicz</button>
+                <button class="button">Przelicz</button>
             </fieldset>
         </form>
-    </section>
+        <div class="main__tableContainer js-section__tableContainer">
+            <table class="exchangeTable">
+                <caption class="exchangeTable__caption">Kursy stosowane w naszym kantorze</caption>
+                <tr>
+                    <th scope="col"></th>
+                    <th class="exchangeTable__cell exchangeTable__cell--header" scope="col">PLN</th>
+                    <th class="exchangeTable__cell exchangeTable__cell--header" scope="col">EUR</th>
+                    <th class="exchangeTable__cell exchangeTable__cell--header" scope="col">GBP</th>
+                    <th class="exchangeTable__cell exchangeTable__cell--header" scope="col">USD</th>
+                </tr>
+                <tr class="exchangeTable__row">
+                    <th class="exchangeTable__cell exchangeTable__cell--header" scope="row">PLN</th>
+                    <td class="exchangeTable__cell">1</td>
+                    <td class="exchangeTable__cell">0.2245</td>
+                    <td class="exchangeTable__cell">0.2018</td>
+                    <td class="exchangeTable__cell">0.2526</td>
+                </tr>
+                <tr class="exchangeTable__row">
+                    <th class="exchangeTable__cell exchangeTable__cell--header" scope="row">EUR</th>
+                    <td class="exchangeTable__cell">4.4534</td>
+                    <td class="exchangeTable__cell">1</td>
+                    <td class="exchangeTable__cell">0.8988</td>
+                    <td class="exchangeTable__cell">1.1249</td>
+                </tr>
+                <tr class="exchangeTable__row">
+                    <th class="exchangeTable__cell exchangeTable__cell--header" scope="row">GBP</th>
+                    <td class="exchangeTable__cell">4.9551</td>
+                    <td class="exchangeTable__cell">1.1127</td>
+                    <td class="exchangeTable__cell">1</td>
+                    <td class="exchangeTable__cell">1.2516</td>
+                </tr>
+                <tr class="exchangeTable__row">
+                    <th class="exchangeTable__cell exchangeTable__cell--header" scope="row">USD</th>
+                    <td class="exchangeTable__cell">3.9589</td>
+                    <td class="exchangeTable__cell">0.8890</td>
+                    <td class="exchangeTable__cell">0.7990</td>
+                    <td class="exchangeTable__cell">1</td>
+                </tr>
+            </table>
+        </div>
+        <button class="button js-button--showTable">Ukryj tabelę z kursami wymiany</button>
+    </main>
 </body>
 
 
