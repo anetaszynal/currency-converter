@@ -1,68 +1,83 @@
-let showTable = document.querySelector(".js-button--showTable");
-let hiddenTable = document.querySelector(".js-section__tableContainer");
-
-showTable.addEventListener("click", () => {
-    if (showTable.innerText === "Ukryj tabelę z kursami wymiany") {
-        hiddenTable.classList.add("js-section__tableContainer--hidden");
-        showTable.innerText = "Pokaż tabelę z kursami wymiany";
-    }
-    else {
-        showTable.innerText = "Ukryj tabelę z kursami wymiany";
-        hiddenTable.classList.toggle("js-section__tableContainer--hidden");
-    }
-});
+{
+    const showTableButton = document.querySelector(".js-button--showTable");
 
 
-let formElement = document.querySelector(".js-form");
-let amountElement = document.querySelector(".js-form__input--amount");
-let yourCurrencyElement = document.querySelector(".js-form__select--yourCurrency");
-let finalCurrencyElement = document.querySelector(".js-form__select--finalCurrency");
-let resultElement = document.querySelector(".js-result");
+    const toggleVisibilityTable = () => {
+        const hiddenTable = document.querySelector(".js-section__tableContainer");
 
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-
-    let amount = + amountElement.value;
-    let yourCurrency = yourCurrencyElement.value;
-    let finalCurrency = finalCurrencyElement.value; 
-
-    let eurRate = 4.4534;
-    let gbpRate = 4.9551;
-    let usdRate = 3.9589;
-    let plnValue;
-
-    switch (yourCurrency) {
-        case "PLN":
-            plnValue = amount;
-            break;
-        case "EUR":
-            plnValue = amount * eurRate;
-            break;
-        case "GBP":
-            plnValue = amount * gbpRate;
-            break;
-        case "USD":
-            plnValue = amount * usdRate
-            break;
-
+        if (showTableButton.innerText === "Ukryj tabelę z kursami wymiany") {
+            hiddenTable.classList.add("js-section__tableContainer--hidden");
+            showTableButton.innerText = "Pokaż tabelę z kursami wymiany";
+        }
+        else {
+            showTableButton.innerText = "Ukryj tabelę z kursami wymiany";
+            hiddenTable.classList.toggle("js-section__tableContainer--hidden");
+        }
     }
 
-    switch (finalCurrency) {
-        case "PLN":
-            result = plnValue;
-            break;
-        case "EUR":
-            result = plnValue / eurRate;
-            break;
-        case "GBP":
-            result = plnValue / gbpRate;
-            break;
-        case "USD":
-            result = plnValue / usdRate;
-            break;
+    const eurRate = 4.4534;
+    const gbpRate = 4.9551;
+    const usdRate = 3.9589;
 
+    const calculateToPLN = (amount, yourCurrency) => {
+
+        switch (yourCurrency) {
+            case "PLN":
+                return amount;
+            case "EUR":
+                return amount * eurRate;
+            case "GBP":
+                return amount * gbpRate;
+            case "USD":
+                return amount * usdRate
+        }
     }
 
-    resultElement.innerText = ` Za ${amount} ${yourCurrency} kupisz u nas ${result.toFixed(2)} ${finalCurrency}`;
-});
+    const calculateToFinalCurrency = (plnValue, finalCurrency) => {
+
+        switch (finalCurrency) {
+            case "PLN":
+                return plnValue;
+            case "EUR":
+                return plnValue / eurRate;
+            case "GBP":
+                return plnValue / gbpRate;
+            case "USD":
+                return plnValue / usdRate;
+
+        }
+    }
+
+    const showResult = (amount, yourCurrency, result, finalCurrency) => {
+        const resultElement = document.querySelector(".js-result");
+
+        resultElement.innerText = ` Za ${amount} ${yourCurrency} kupisz u nas ${result.toFixed(2)} ${finalCurrency}`;
+    }
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+
+        const amountElement = document.querySelector(".js-form__input--amount");
+        const yourCurrencyElement = document.querySelector(".js-form__select--yourCurrency");
+        const finalCurrencyElement = document.querySelector(".js-form__select--finalCurrency");
+
+        const amount = +amountElement.value;
+        const yourCurrency = yourCurrencyElement.value;
+        const finalCurrency = finalCurrencyElement.value;
+        const plnValue = calculateToPLN(amount, yourCurrency);
+        const result = calculateToFinalCurrency(plnValue, finalCurrency);
+
+        showResult(amount, yourCurrency, result, finalCurrency);
+    }
+
+    const init = () => {
+        const formElement = document.querySelector(".js-form");
+
+        showTableButton.addEventListener("click", toggleVisibilityTable);
+        formElement.addEventListener("submit", onFormSubmit);
+    }
+
+    init();
+
+}
+
