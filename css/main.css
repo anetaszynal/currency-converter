@@ -1,6 +1,10 @@
-.main{
-    background-image: url(../images/backgroung.png);
-    background-repeat: no-repeat;
-    background-position: top 5% left 50%;
-    background-size: cover;
+.main {
+  background-color: hsl(90, 100%, 98%);
+}
+
+.main--changeColor {
+  background-image: url(../images/backgroung.png);
+  background-repeat: no-repeat;
+  background-position: top 5% left 50%;
+  background-size: cover;
 }
